@@ -1,0 +1,55 @@
+/*
+    *
+        style .css
+  *      
+*/
+
+p {
+ margin: 0px;
+}
+
+.heading {
+    margin: auto;
+    width: 80%;
+    height: 150px;
+    background-color: green; 
+    color: white; 
+    text-align: center;
+    padding-top: 30px;
+}
+
+.train-schedule-disp {
+    width: 80%;
+    margin: auto;
+}
+
+.add-train-disp {
+    width: 80%;
+    margin: auto;
+}
+
+.train-form {
+    margin: 15px;
+}
+
+input[type="text"]{
+
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.section-title{
+    color:white; 
+    background-color: blue;
+    padding: 5px 0px 0px 15px;
+    height: 30px;
+
+
+}
+
+button {
+    color: white;
+    background-color: blue;
+    width: 100px;
+    height: 40px;
+}
