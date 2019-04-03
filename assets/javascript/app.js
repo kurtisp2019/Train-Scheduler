@@ -88,17 +88,19 @@ $("#submit-btn").on("click", function (_event) {
     _event.preventDefault();
 
 
+    var trainTime = $("#input-train-time").val();
+    var freq = $("#input-freq").val();
     //  
-    var firstTrainTime = moment($("#input-train-time").val(), "HH:mm");
+    var firstTrainTime = moment(trainTime, "HH:mm");
 
-    var diffTime = moment().diff(firstTrainTime, "minutes");
+    //var diffTime = moment().diff(firstTrainTime, "minutes");
 
    
     // number of times stopped multiplied by 5 min
-    var timeStopped = 5 * $("#input-freq").val();
+    //var timeStopped = $("#input-freq").val();
 
 
-    var nextArrival = moment().add(diffTime + timeStopped, "minutes");
+    var nextArrival = firstTrainTime.add($("#input-freq").val(), "minutes");
 
 
     console.log(nextArrival.format("HH:mm"));
@@ -109,7 +111,7 @@ $("#submit-btn").on("click", function (_event) {
         $("#input-destination").val(),
         $("#input-freq").val(),
         nextArrival.format("HH:mm"),
-        diffTime + timeStopped);
+        $("#input-freq").val());
 });
 
 
