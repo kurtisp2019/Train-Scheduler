@@ -92,26 +92,34 @@ $("#submit-btn").on("click", function (_event) {
     var freq = $("#input-freq").val();
     //  
     var firstTrainTime = moment(trainTime, "HH:mm");
-
-    //var diffTime = moment().diff(firstTrainTime, "minutes");
-
-   
-    // number of times stopped multiplied by 5 min
-    //var timeStopped = $("#input-freq").val();
+    var trainTime = firstTrainTime.format("HH:mm");
 
 
-    var nextArrival = firstTrainTime.add($("#input-freq").val(), "minutes");
+    var nextArrival = firstTrainTime.add(freq, "minutes");
 
 
-    console.log(nextArrival.format("HH:mm"));
+    var curTime = moment().format("HH:mm");
+    var time = moment(curTime, "HH:mm");
 
+    var duration = moment.duration(time.diff(firstTrainTime));
+
+    if (time > firstTrainTime) {
+  
+        firstTrainTime.add(1, "days");
+
+        var duration = moment.duration(time.diff(firstTrainTime));
+        console.log("curtime was more");
+    }
+    
+    //var duration = moment.duration(curTime.diff(firstTrainTime));
+    var minutes = Math.abs(duration.asMinutes());
 
     // add the new train
     addTrainToDB($("#input-train-name").val(),
         $("#input-destination").val(),
         $("#input-freq").val(),
         nextArrival.format("HH:mm"),
-        $("#input-freq").val());
+        minutes);
 });
 
 
